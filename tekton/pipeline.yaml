@@ -73,21 +73,21 @@ spec:
           workspace: pipeline-workspace
       taskRef:
         name: buildah
-        kind: clusterTask
+        kind: ClusterTask
       params:
       - name: IMAGE
         value: "$(params.build-image)"
       runAfter:
         - tests
         - lint
-
+        
     - name: deploy
       workspaces:
         - name: manifest-dir
           workspace: pipeline-workspace
       taskRef:
         name: openshift-client
-        kind: clusterTask
+        kind: ClusterTask
       params:
       - name: SCRIPT
         value: |
